@@ -2,6 +2,8 @@
 
 _Created with react.js_
 
+Run live demo [here](https://drednes.github.io)
+
 # Installation instruction
 
 1. Install.
