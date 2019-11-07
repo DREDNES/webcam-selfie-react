@@ -72,9 +72,12 @@ export default class App extends React.Component {
 
   saveCapture() {
     if (this.state.canvas) {
-      this.state.images.push(
-        document.getElementById('capture').toDataURL('image/jpeg')
-      );
+      this.setState(prevState => ({
+        images: [
+          ...prevState.images,
+          document.getElementById('capture').toDataURL('image/jpeg')
+        ]
+      }));
       this.setState({ canvas: false });
       this.clearCanvas();
     }
@@ -101,7 +104,9 @@ export default class App extends React.Component {
 
   previewDelete = () => {
     const index = this.state.images.indexOf(this.state.fullScreenPreview);
-    this.state.images.splice(index, 1);
+    let images = this.state.images;
+    images.splice(index, 1);
+    this.setState({ images });
     this.previewClose();
   };
 
