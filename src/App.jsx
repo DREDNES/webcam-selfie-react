@@ -2,7 +2,7 @@ import React from 'react';
 import ImageView from './ImageView';
 import Image from './Image';
 import HomeScreen from './HomeScreen';
-import './App.css';
+import './assets/css/App.css';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
@@ -16,7 +16,8 @@ export default class App extends React.Component {
     stream: null,
     images: [],
     fullScreenPreview: '',
-    currentImage: ''
+    currentImage: '',
+    width: window.innerWidth
   };
 
   startVideo() {
@@ -81,7 +82,7 @@ export default class App extends React.Component {
   clearCanvas() {
     const video = document.querySelector('video');
     const width = video.offsetWidth, height = video.offsetHeight;
-    const canvas = document.getElementById('capture');
+    const canvas = document.querySelector('canvas');
     canvas.width = width;
     canvas.height = height;
     canvas.getContext('2d').clearRect(0, 0, width, height);
@@ -117,22 +118,29 @@ export default class App extends React.Component {
     }
   }
 
-  renderSlider() {
-    const viewWidth = window.innerWidth;
+  updateDimensions = () => {
+    this.setState({ width: window.innerWidth });
+  };
+  componentDidMount() {
+    window.addEventListener('resize', this.updateDimensions);
+  }
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.updateDimensions);
+  }
 
-    var settingsSlider = {
+  renderSlider() {
+    const viewWidth = this.state.width;
+
+    const settingsSlider = {
       infinite: true,
       speed: 500,
       slidesToShow: this.state.images.length < Math.ceil(viewWidth/250) ? this.state.images.length : Math.ceil(viewWidth/250),
       slidesToScroll: 1
     };
   
-    let captureWidth;
-    if(this.state.images.length * 230 < viewWidth - 50) {
-      captureWidth = `${this.state.images.length * 230}px`;
-    } else {
-      captureWidth = '95%';
-    }
+    const captureWidth = this.state.images.length * 230 < viewWidth - 50 
+                          ? `${this.state.images.length * 230}px` 
+                          : '95%';
 
     return <div className="captures" style={{width: captureWidth}} >
             <Slider className="slick" {...settingsSlider}>
@@ -158,7 +166,7 @@ export default class App extends React.Component {
           ? <div>
               <canvas id="capture" style={{zIndex:15}}></canvas>
               <video width="100%" autoPlay/>
-              <div className='boundary'></div>
+              <div className="boundary"></div>
             </div>
           :<HomeScreen start={() => this.startVideo()}/>
           }
@@ -171,7 +179,7 @@ export default class App extends React.Component {
       }
       {
         this.state.images.length !== 0 &&
-            <button className='deleteAllBut' onClick={() => this.deleteAllImages()}>Delete all selfies</button> 
+            <button className="deleteAllBut" onClick={() => this.deleteAllImages()}>Delete all selfies</button> 
       }
       </header>
     </div>

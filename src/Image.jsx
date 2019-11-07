@@ -1,7 +1,6 @@
 import React from 'react';
 
-export default function Image (props) {
-  let source = props.source;
+export default function Image ({source, open}) {
 
   let style = {
     width: '200px',
@@ -11,7 +10,7 @@ export default function Image (props) {
 
   return (
     <div>
-      <img alt='' src={source} style={style} onClick={ () => props.open(source) }/>
+      <img alt='' src={source} style={style} onClick={ () => open(source) }/>
     </div>
    
   );

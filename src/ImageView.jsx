@@ -1,7 +1,7 @@
 import React from 'react';
-import Close from './close.svg';
-import Save from './save.svg';
-import Delete from './delete.svg';
+import Close from './assets/icons/close.svg';
+import Save from './assets/icons/save.svg';
+import Delete from './assets/icons/delete.svg';
 
 
 export default function ImageView(props) {

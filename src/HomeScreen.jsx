@@ -1,7 +1,6 @@
 import React from 'react';
 
-export default function MainScreen(props) {
-    const start = props.start;
+export default function MainScreen({start}) {
   return (
     <div>
         <h1>Make selfies from your WebCam!</h1>

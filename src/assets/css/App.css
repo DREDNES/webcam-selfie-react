@@ -1,6 +1,5 @@
 .App {
   text-align: center;
-  background-color: #282c34;
 }
 
 
@@ -22,7 +21,6 @@
   color: white;
   text-decoration: none;
   margin: 1em;
-  outline: none;
   border: none;
   cursor: pointer;
   padding: .8em 1em calc(.8em + 3px);
@@ -125,7 +123,6 @@
   color: white;
   text-decoration: none;
   margin: 1em;
-  outline: none;
   border: none;
   cursor: pointer;
   padding: .8em 1em calc(.8em + 3px);
