@@ -1,6 +1,6 @@
 # Take selfie with your webcam and save it
 
-*Realized on react.js*
+*Created with react.js*
 
 Installation instruction
 =====================
