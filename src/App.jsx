@@ -62,7 +62,7 @@ export default class App extends React.Component {
       const video = document.querySelector('video');
       const width = video.offsetWidth,
         height = video.offsetHeight;
-      const canvas = document.getElementById('capture');
+      const canvas = document.querySelector('canvas');
       canvas.width = width;
       canvas.height = height;
       canvas.getContext('2d').drawImage(video, 0, 0, width, height);
@@ -72,12 +72,9 @@ export default class App extends React.Component {
 
   saveCapture() {
     if (this.state.canvas) {
-      this.setState(prevState => ({
-        images: [
-          ...prevState.images,
-          document.getElementById('capture').toDataURL('image/jpeg')
-        ]
-      }));
+      let images = this.state.images;
+      images.push(document.querySelector('canvas').toDataURL('image/jpeg'));
+      this.setState({ images });
       this.setState({ canvas: false });
       this.clearCanvas();
     }
@@ -184,7 +181,7 @@ export default class App extends React.Component {
           <div className="Video-zone">
             {this.state.stream ? (
               <div>
-                <canvas id="capture" style={{ zIndex: 15 }}></canvas>
+                <canvas style={{ zIndex: 15 }}></canvas>
                 <video width="100%" autoPlay />
                 <div className="boundary"></div>
               </div>
