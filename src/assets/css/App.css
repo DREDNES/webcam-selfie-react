@@ -2,8 +2,7 @@
   text-align: center;
 }
 
-
-.Buttons-wrap{
+.Buttons-wrap {
   z-index: 20;
   position: fixed;
   left: 50%;
@@ -15,7 +14,7 @@
   justify-content: center;
 }
 
-.Buttons-wrap button{
+.Buttons-wrap button {
   font-weight: 700;
   font-size: 1em;
   color: white;
@@ -23,14 +22,16 @@
   margin: 1em;
   border: none;
   cursor: pointer;
-  padding: .8em 1em calc(.8em + 3px);
+  padding: 0.8em 1em calc(0.8em + 3px);
   border-radius: 3px;
-  background: rgb(79,161,209);
+  background: rgb(79, 161, 209);
   box-shadow: 0 -3px rgb(52, 126, 163) inset;
   transition: 0.2s;
 }
 
-.Buttons-wrap button:hover { background:rgb(42, 128, 179); }
+.Buttons-wrap button:hover {
+  background: rgb(42, 128, 179);
+}
 
 .App-header {
   height: 100vh;
@@ -45,13 +46,13 @@
 .Video-zone {
   position: fixed;
   max-width: 800px;
-  margin-top:-2.5em;
+  margin-top: -2.5em;
 }
 .Video-zone canvas {
   position: absolute;
 }
 
-.boundary{
+.boundary {
   z-index: 10;
   position: absolute;
   top: 50%;
@@ -86,18 +87,18 @@
   justify-content: center;
 }
 
-.closeImageView input{
+.closeImageView input {
   width: 4em;
   background-color: #555555;
 }
 
-.actionsImageView input{
+.actionsImageView input {
   padding: 0.5em 1.5em;
   width: 4em;
   margin: 0 1em;
 }
 
-.closeImageView{
+.closeImageView {
   position: absolute;
   z-index: 999;
 
@@ -105,16 +106,16 @@
   right: 1em;
 }
 
-.actionsImageView{
+.actionsImageView {
   position: absolute;
   z-index: 999;
-  
+
   bottom: 2em;
   left: 50%;
   transform: translateX(-50%);
 }
 
-.deleteAllBut{
+.deleteAllBut {
   position: absolute;
   top: 1em;
   right: 1em;
@@ -125,10 +126,12 @@
   margin: 1em;
   border: none;
   cursor: pointer;
-  padding: .8em 1em calc(.8em + 3px);
+  padding: 0.8em 1em calc(0.8em + 3px);
   border-radius: 3px;
   background: rgb(255, 92, 54);
   box-shadow: 0 -3px rgb(170, 61, 37) inset;
   transition: 0.2s;
 }
-.deleteAllBut:hover { background:rgb(170, 61, 37); }
+.deleteAllBut:hover {
+  background: rgb(170, 61, 37);
+}

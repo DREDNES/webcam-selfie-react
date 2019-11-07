@@ -1,15 +1,19 @@
 # Take selfie with your webcam and save it
 
-*Created with react.js*
+_Created with react.js_
 
-Installation instruction
-=====================
+# Installation instruction
+
 1. Install.
-``` bash
+
+```bash
 npm install
 ```
+
 2. Run.
-``` bash
+
+```bash
 npm start
 ```
+
 3. Open on localhost:3000.
