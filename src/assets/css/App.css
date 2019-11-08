@@ -4,10 +4,8 @@
 
 .Buttons-wrap {
   z-index: 20;
-  position: fixed;
-  left: 50%;
-  transform: translate(-50%);
-  margin-top: 1em;
+  justify-self: flex-start;
+  margin: 1em auto;
   display: flex;
   flex-direction: line;
   align-items: center;
@@ -15,11 +13,12 @@
 }
 
 .Buttons-wrap button {
+  z-index: 500;
   font-weight: 700;
-  font-size: 1em;
+  font-size: 0.6em;
   color: white;
   text-decoration: none;
-  margin: 1em;
+  margin: 0 1em;
   border: none;
   cursor: pointer;
   padding: 0.8em 1em calc(0.8em + 3px);
@@ -34,6 +33,7 @@
 }
 
 .App-header {
+  padding: 0;
   height: 100vh;
   display: flex;
   flex-direction: column;
@@ -44,9 +44,7 @@
 }
 
 .Video-zone {
-  position: fixed;
   max-width: 800px;
-  margin-top: -2.5em;
 }
 .Video-zone canvas {
   position: absolute;
@@ -65,8 +63,6 @@
 }
 
 .captures {
-  position: absolute;
-  bottom: 0;
   z-index: 999;
   width: fit-content;
   height: 200px;
@@ -88,13 +84,13 @@
 }
 
 .closeImageView input {
-  width: 4em;
+  width: 3em;
   background-color: #555555;
 }
 
 .actionsImageView input {
   padding: 0.5em 1.5em;
-  width: 4em;
+  width: 2em;
   margin: 0 1em;
 }
 

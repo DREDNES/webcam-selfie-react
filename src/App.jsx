@@ -176,8 +176,8 @@ export default class App extends React.Component {
   render() {
     return (
       <div className="App">
-        {this.renderButtonsSet()}
         <header className="App-header">
+          {this.renderButtonsSet()}
           <div className="Video-zone">
             {this.state.stream ? (
               <div>

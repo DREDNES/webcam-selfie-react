@@ -15,7 +15,7 @@ export default function MainScreen({ start, error }) {
         <div>
           <h3>Click Start and allow access to your camera</h3>
           <div className="Buttons-wrap" style={{ marginTop: '-1em' }}>
-            <button style={{ padding: '0.3em 0.8em' }} onClick={() => start()}>
+            <button style={{ padding: '0.5em 1em' }} onClick={() => start()}>
               START
             </button>
           </div>
