@@ -1,20 +1,20 @@
-import React from 'react';
-import { debounce } from 'lodash';
-import ImageView from './ImageView';
-import Image from './Image';
-import HomeScreen from './HomeScreen';
-import './assets/css/App.css';
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
-import Slider from 'react-slick';
+import React from "react";
+import { debounce } from "lodash";
+import ImageView from "./ImageView";
+import Image from "./Image";
+import HomeScreen from "./HomeScreen";
+import "./assets/css/App.css";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import Slider from "react-slick";
 
 export default class App extends React.Component {
   state = {
     canvas: false,
     stream: null,
     images: [],
-    fullScreenPreview: '',
-    currentImage: '',
+    fullScreenPreview: "",
+    currentImage: "",
     width: window.innerWidth,
     error: null
   };
@@ -26,8 +26,8 @@ export default class App extends React.Component {
     };
     const gotMedia = stream => {
       this.setState({ stream });
-      const video = document.querySelector('video');
-      if ('srcObject' in video) {
+      const video = document.querySelector("video");
+      if ("srcObject" in video) {
         video.srcObject = stream;
       } else {
         video.src = window.URL.createObjectURL(stream);
@@ -40,11 +40,25 @@ export default class App extends React.Component {
       navigator.mozGetUserMedia ||
       navigator.msGetUserMedia;
 
-    if (typeof navigator.mediaDevices.getUserMedia === 'undefined') {
-      navigator.getUserMedia({ video: true, audio: false }, gotMedia, error);
+    if (typeof navigator.mediaDevices.getUserMedia === "undefined") {
+      navigator.getUserMedia(
+        {
+          video: {
+            facingMode: "user"
+          },
+          audio: false
+        },
+        gotMedia,
+        error
+      );
     } else {
       navigator.mediaDevices
-        .getUserMedia({ video: true, audio: false })
+        .getUserMedia({
+          video: {
+            facingMode: "user"
+          },
+          audio: false
+        })
         .then(gotMedia)
         .catch(error);
     }
@@ -59,13 +73,13 @@ export default class App extends React.Component {
 
   capture() {
     if (this.state.stream) {
-      const video = document.querySelector('video');
+      const video = document.querySelector("video");
       const width = video.offsetWidth,
         height = video.offsetHeight;
-      const canvas = document.querySelector('canvas');
+      const canvas = document.querySelector("canvas");
       canvas.width = width;
       canvas.height = height;
-      canvas.getContext('2d').drawImage(video, 0, 0, width, height);
+      canvas.getContext("2d").drawImage(video, 0, 0, width, height);
       this.setState({ canvas: true });
     }
   }
@@ -73,7 +87,7 @@ export default class App extends React.Component {
   saveCapture() {
     if (this.state.canvas) {
       let images = this.state.images;
-      images.push(document.querySelector('canvas').toDataURL('image/jpeg'));
+      images.push(document.querySelector("canvas").toDataURL("image/jpeg"));
       this.setState({ images });
       this.setState({ canvas: false });
       this.clearCanvas();
@@ -88,13 +102,13 @@ export default class App extends React.Component {
   }
 
   clearCanvas() {
-    const video = document.querySelector('video');
+    const video = document.querySelector("video");
     const width = video.offsetWidth,
       height = video.offsetHeight;
-    const canvas = document.querySelector('canvas');
+    const canvas = document.querySelector("canvas");
     canvas.width = width;
     canvas.height = height;
-    canvas.getContext('2d').clearRect(0, 0, width, height);
+    canvas.getContext("2d").clearRect(0, 0, width, height);
   }
 
   previewOpen = image => this.setState({ fullScreenPreview: image });
@@ -107,7 +121,7 @@ export default class App extends React.Component {
     this.previewClose();
   };
 
-  previewClose = () => this.setState({ fullScreenPreview: '' });
+  previewClose = () => this.setState({ fullScreenPreview: "" });
 
   deleteAllImages() {
     this.setState({ images: [] });
@@ -138,10 +152,10 @@ export default class App extends React.Component {
   );
 
   componentDidMount() {
-    window.addEventListener('resize', this.updateDimensions);
+    window.addEventListener("resize", this.updateDimensions);
   }
   componentWillUnmount() {
-    window.removeEventListener('resize', this.updateDimensions);
+    window.removeEventListener("resize", this.updateDimensions);
   }
 
   renderSlider() {
@@ -160,7 +174,7 @@ export default class App extends React.Component {
     const captureWidth =
       this.state.images.length * 230 < viewWidth - 50
         ? `${this.state.images.length * 230}px`
-        : '95%';
+        : "95%";
 
     return (
       <div className="captures" style={{ width: captureWidth }}>
@@ -182,8 +196,7 @@ export default class App extends React.Component {
             {this.state.stream ? (
               <div>
                 <canvas style={{ zIndex: 15 }}></canvas>
-                <video width="100%" autoPlay />
-                <div className="boundary"></div>
+                <video width="100%" autoPlay playsinline />
               </div>
             ) : (
               <HomeScreen
