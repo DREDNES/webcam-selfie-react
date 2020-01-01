@@ -2,7 +2,7 @@
 
 _Created with react.js_
 
-Run live demo [here](https://drednes.github.io/webcam-selfie/)
+Run live demo [here](https://drednes.github.io/demo/webcam-selfie/)
 
 # Installation instruction
 
